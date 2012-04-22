@@ -8,6 +8,14 @@
 body
   background-color: #f0f0f0
 
+
+/* header */
+.header
+  text-align: center
+  background-color: #909bdb
+  h3, small
+    color: white
+
 /* template */
 form.drone-form
   .drone

@@ -1,0 +1,35 @@
+<section {{bindAttr class="droneClass"}}>
+  <h3>
+    <button {{bindAttr class="toggleButtonClass"}} {{action "toggle"}}>
+      <i {{bindAttr class="toggleIconClass"}}></i>
+    </button>
+
+    &nbsp;
+
+    <span class="name">{{content.name}}</span>
+
+    <span class="stats">
+
+      <i class="icon-tag icon-external-link" rel="tooltip" title="tooltip">
+        {{content.dependencyCount}}
+      </i>
+
+      <i class="icon-tag icon-heart" rel="tooltip" title="tooltip">
+        {{content.pairCount}}
+      </i>
+
+      <i class="icon-tag icon-list" rel="tooltip" title="tooltip">
+        {{content.paramCount}}
+      </i>
+    </span>
+
+    <small class="category pull-right">
+      CATEGORY
+    </small>
+  </h3>
+
+  <p class="desc">
+    DESCRIPTION
+  </p>
+</section>
+

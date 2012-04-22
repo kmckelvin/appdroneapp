@@ -1,6 +1,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require chosen-jquery
+//= require ember
+//= require ember/appdroneapp
 //= require bootstrap-tab
 //= require bootstrap-dropdown
 //= require bootstrap-button

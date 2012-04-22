@@ -39,7 +39,7 @@ br
               $('section.drone').addClass('hide');
 
               // show only those that match the category
-              drone_selector = 'section.drone[data-category="' + category + '"];
+              drone_selector = 'section.drone[data-category="' + category + '"]';
               $(drone_selector).removeClass('hide');
               $(drone_selector + ':first').css('margin-top','0')
 
