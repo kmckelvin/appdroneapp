@@ -1,0 +1,80 @@
+br
+
+.row
+  .span6.offset2
+    .btn-group.pull-right
+      a.btn.btn-primary.dropdown-toggle data-toggle='dropdown' href='#'
+        i.icon-cogs.icon-large
+        span style='margin-left: 5px' Load
+        b.caret style='margin-left: 5px'
+      ul.dropdown-menu.pull-right
+        li
+          a Blank
+        li
+          a Default
+
+    h1 Choose your weapons!
+
+    br
+
+    .row
+      .span1
+        nav.category_filter.nav.nav-tabs.nav-stacked
+
+          - AppDrone::Drone.categories.sort.each.with_index do |category,index|
+            li
+              a href='#' data-category=category = category
+        javascript:
+          $(function() {
+    
+            // filter by categories
+            $('nav.category_filter a').click(function() {
+              var category = $(this).data('category');
+    
+              // toggle the active classes
+              $('li',$(this).closest('nav')).removeClass('active');
+              $(this).parent('li').addClass('active');
+    
+              // hide all drones
+              $('section.drone').addClass('hide');
+
+              // show only those that match the category
+              drone_selector = 'section.drone[data-category="' + category + '"]';
+              $(drone_selector).removeClass('hide');
+              $(drone_selector + ':first').css('margin-top','0')
+
+              return false;
+            });
+
+            $('nav.category_filter a:first').click();
+
+            // toggle on-off
+            $('.drone button.toggle').click(function() {
+              var activate = !$(this).hasClass('active');
+              var icon = $('i',this);
+              var drone = $(this).closest('.drone');
+              if(activate) {
+                $(this).addClass('active btn-primary');
+                icon.removeClass('icon-heart-empty').addClass('icon-heart');
+                drone.addClass('active')
+              } else {
+                $(this).removeClass('active btn-primary');
+                icon.removeClass('icon-heart').addClass('icon-heart-empty');
+                drone.removeClass('active')
+              }
+            });
+          });
+
+      .span5
+        - drones = AppDrone::Drone.drones.map(&:to_app_drone_class).sort_by { |d| d.category.to_s + d.human_name }
+        - drones = drones.sort_by { |d| d.category }
+        - drones = AppDrone::DependencyChain.sort(drones)
+        - drones.each do |drone|
+          = render partial: 'pages/drone', locals: { drone: drone }
+
+br
+footer style='text-align:center'
+  - gemspec = Gem.loaded_specs['app_drone']
+  strong = gemspec.name
+  | &mdash;
+  = gemspec.version

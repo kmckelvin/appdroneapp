@@ -1,0 +1,33 @@
+- header = [drone.human_name, content_tag(:small,drone.desc)].join('&nbsp;').html_safe
+.row.drone
+  .span2
+    h3 style='text-align:right'
+      i.icon-large.icon-info-sign rel='tooltip' title="#{drone.desc}"
+      = drone.human_name
+
+  .span5
+    - if drone.params.empty?
+      h3 &mdash;
+    - else
+      - drone.params.each do |param|
+        - default = drone.param_named(param.name).options[:default]
+        - input_type = param.type
+
+        - if input_type == :choose_many
+          br
+          br
+          h6 = param.name.to_s.humanize
+          .btn-group data-toggle='buttons-checkbox'
+            - param.options[:choices].each do |c|
+              button.btn = c.to_s.humanize.titleize
+        - elsif input_type == :boolean
+          button.btn.btn-primary data-toggle='button' rel='tooltip' title=param.options[:info]
+            = param.name.to_s.humanize.titleize
+          '&nbsp;
+
+        - if false
+          - if input_type == :choose_many
+            = f.input "#{param.name}", as: :check_boxes, collection: param.options[:choices], hint: ('&nbsp;&nbsp;'.html_safe + param.options[:info]), item_wrapper_class: 'inline'
+          - else
+            = f.input "#{param.name}", as: input_type, hint: ('&nbsp;&nbsp;'.html_safe + param.options[:info])
+
