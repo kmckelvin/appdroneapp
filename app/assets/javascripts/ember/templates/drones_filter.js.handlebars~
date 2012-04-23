@@ -1,4 +1,12 @@
-Filter:  {{category}}
+<br />
 
-<button {{action "filterA"}}>filter A</button>
-<button {{action "filterB"}}>filter A</button>
+Filter:  {{activeCategory.name}}
+
+{{#each categories}}
+<button {{action "filter"}} {{bindAttr data-category="name"}} {{bindAttr class="buttonClass"}}>
+  {{name}}
+</button>
+{{/each}}
+
+<br />
+<br />

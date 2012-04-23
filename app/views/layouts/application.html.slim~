@@ -10,10 +10,20 @@ html
     .header
       .container
         .row
-          .span4.offset4
+          .span4.offset3
             h3
               small AppDrone: 
-              | 23 templates served
+              | {X} templates served
             
     .container
-      = yield
+      br
+      .row
+        .span8.offset4
+          h1 Choose your weapons &hellip;
+      br
+      .row
+        .span1.offset3
+          #filter
+        .span7
+          #content
+            = yield

@@ -31,6 +31,13 @@ i[rel=tooltip]
   &:hover
     color: blue
 
+
+/* ember */
+#filter
+  text-align: right
+  a.btn
+    margin: 5px
+
 /* weapons */
 nav.category_filter
   li a
@@ -88,4 +95,21 @@ section.drone
     font-style: italic
     font-size: 110%
 
-
+/* discrete modal */
+.modal.modal-discrete
+  background: transparent
+  width: 320px
+  margin-left: -160px
+  &, h2
+    color: white!important
+  border: none
+  +box-shadow(none)
+  .modal-header
+    color: white
+    border-bottom: 0px
+  .modal-body
+    padding-bottom: none
+  .modal-footer
+    background: transparent
+    +box-shadow(none)
+    border-top: none

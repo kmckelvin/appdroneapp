@@ -7,18 +7,35 @@
 
 window.App = Ember.Application.create({
   ready: function() {
-    // create drones
-    App.drones = [
-      App.Drone.create({ name: 'myName', category: "a" }),
-      App.Drone.create({ name: 'myName2', category: "a" }),
-      App.Drone.create({ name: 'myName3', dependencies: ['myName'], category: "b" })
-    ]
+    // load categories
+    var category_1 = App.Category.create({ name: 'A'});
+    var category_2 = App.Category.create({ name: 'B'});
+
+    // load drones
+    var drone_a = App.Drone.create({ name: 'drone-A', category: category_1 });
+    var drone_b = App.Drone.create({ name: 'drone-B', category: category_2 });
+    var drone_c = App.Drone.create({ name: 'drone-C', category: category_2 });
+    var drone_d = App.Drone.create({ name: 'drone-A', category: category_2 });
+
+    drone_b.set("dependencies",[drone_a]);
+    drone_c.set('dependencies',[drone_a,drone_b])
+    
+    // should happen automatically:
+    drone_a.set('dependants',[drone_b,drone_c]);
+    drone_b.set('dependants',[drone_c]);
+
+    // store drones
+    App.drones = [ drone_a, drone_b, drone_c, drone_d]
 
     // create filter
-    App.DronesFilter.append();
+    App.DronesFilter.set('content',[category_1, category_2]);
+    App.DronesFilter.appendTo('#filter');
 
     // show the list
-    App.DronesView.append();
+    App.DronesFilter.filter('a');
+    App.DronesView.appendTo('#content');
 
   }
 });
+
+

@@ -9,27 +9,39 @@
     <span class="name">{{content.name}}</span>
 
     <span class="stats">
+      {{#if content.hasActiveDependants}}
+        <i class='icon-lock'>
+          {{content.activeDependantCount}}
+        </i>
+      {{/if}}
 
-      <i class="icon-tag icon-external-link" rel="tooltip" title="tooltip">
-        {{content.dependencyCount}}
-      </i>
+      {{#if content.hasDependencies}}
+        <i class="icon-external-link" rel="tooltip" title="tooltip">
+          {{content.activeDependencyCount}}/{{content.dependencyCount}}
+        </i>
+      {{/if}}
 
-      <i class="icon-tag icon-heart" rel="tooltip" title="tooltip">
-        {{content.pairCount}}
-      </i>
+      {{#if content.hasPairs}}
+        <i class="icon-heart" rel="tooltip" title="tooltip">
+          {{content.pairCount}}
+        </i>
+      {{/if}}
 
-      <i class="icon-tag icon-list" rel="tooltip" title="tooltip">
-        {{content.paramCount}}
-      </i>
+      {{#if content.hasParams}}
+        <i class="icon-list" rel="tooltip" title="tooltip">
+          {{content.paramCount}}
+        </i>
+      {{/if}}
     </span>
 
     <small class="category pull-right">
-      CATEGORY
+      {{content.category.name}}
     </small>
   </h3>
 
   <p class="desc">
-    DESCRIPTION
+    {{content.desc}}
   </p>
+
 </section>
 

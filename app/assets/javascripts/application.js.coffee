@@ -4,6 +4,7 @@
 //= require ember
 //= require ember/appdroneapp
 //= require bootstrap-tab
+//= require bootstrap-modal
 //= require bootstrap-dropdown
 //= require bootstrap-button
 //= require bootstrap-transition
