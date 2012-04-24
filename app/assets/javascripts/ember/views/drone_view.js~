@@ -1,5 +1,6 @@
 App.DroneView = Ember.View.extend({
   templateName: 'ember/templates/drone',
+  //droneBinding: 'content',
 
   toggle: function(event) {
     var drone = event.view.get('content');
@@ -19,7 +20,7 @@ App.DroneView = Ember.View.extend({
   }.property('content.status'),
 
   toggleButtonClass: function() {
-    var classes = 'btn toggle';
+    var classes = 'btn btn-large toggle';
     var drone = this.get('content');
     if(drone.get('active')) {
       classes += ' active';

@@ -7,9 +7,11 @@ drones = AppDrone::DependencyChain.sort(drones)
 <% drones.each do |drone| %>
   <strong><%= drone.name %></strong>
   <br />
-  <%= drone.dependants %>
-  <% unless drone.dependencies.empty? %>
-    
-  <% end %>
+  .well
+    [
+    <% drone.params.each do |p| %>
+      App.Param.create({ name: '<%= p.name %>', type: '<%= p.type %>' }),
+    <% end %>
+    ]
   <br />
 <% end %>

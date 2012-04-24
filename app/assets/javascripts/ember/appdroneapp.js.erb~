@@ -5,7 +5,7 @@
 #= require_tree ./helpers
 #= require_tree ./templates
 
-window.App = Ember.Application.create({
+App = Ember.Application.create({
   ready: function() {
     // load categories
     <% categories = AppDrone::Drone.categories.sort %>
@@ -14,46 +14,47 @@ window.App = Ember.Application.create({
     <% end %>
 
     // load drones
+    <%
+    drones = AppDrone::Drone.drones.map(&:to_app_drone_class).sort_by { |d| d.category.to_s + d.human_name }
+    drones = drones.sort_by { |d| d.category }
+    drones = AppDrone::DependencyChain.sort(drones)
+    %>
 
-<%
-drones = AppDrone::Drone.drones.map(&:to_app_drone_class).sort_by { |d| d.category.to_s + d.human_name }
-drones = drones.sort_by { |d| d.category }
-drones = AppDrone::DependencyChain.sort(drones)
-%>
-
-<% drones.each do |drone| %>
-  var drone_<%= drone.to_sym %> = App.Drone.create({ name: '<%= drone.human_name %>', 
-    desc: "<%= drone.desc %>", category: category_<%= drone.category %> });
-<% end %>
+    <% drones.each do |drone| %>
+    var drone_<%= drone.to_sym %> = App.Drone.create({ name: '<%= drone.human_name %>', 
+      desc: "<%= drone.desc %>", category: category_<%= drone.category %>, active: true,
+      params: ['a','b']
+      });
+    <% end %>
 
 
-    // DEPENDENCIES TODO
-<% drones.each do |drone| %>
-  <% unless drone.dependencies.empty? %>
-    drone_<%= drone.to_sym %>.set('dependencies',[<%= drone.dependencies.map {|d| "drone_#{d.to_sym}" }.join(',') %>]);
-  <% end %>
-<% end %>
+    // DEPENDENCIES
+    <% drones.each do |drone| %>
+      <% unless drone.dependencies.empty? %>
+        drone_<%= drone.to_sym %>.set('dependencies',[<%= drone.dependencies.map {|d| "drone_#{d.to_sym}" }.join(',') %>]);
+      <% end %>
+    <% end %>
     
-    // DEPENDANTS TODO
+    // DEPENDANTS
     // should happen automatically:
-<% drones.each do |drone| %>
-  <% unless drone.dependants.empty? %>
-    drone_<%= drone.to_sym %>.set('dependants',[<%= drone.dependants.map {|d| "drone_#{d.to_sym}" }.join(',') %>]);
-  <% end %>
-<% end %>
+    <% drones.each do |drone| %>
+      <% unless drone.dependants.empty? %>
+        drone_<%= drone.to_sym %>.set('dependants',[<%= drone.dependants.map {|d| "drone_#{d.to_sym}" }.join(',') %>]);
+      <% end %>
+    <% end %>
 
-    // store drones
-    App.drones = [<%= drones.map { |d| "drone_#{d.to_sym}" }.join(',') %>];
+    drones = [<%= drones.map { |d| "drone_#{d.to_sym}" }.join(',') %>];
+// ----------------------
+    // store drones (LATER this should be an AJAX 'GET')
+    App.dronesController.set('drones',drones);
 
-    // create filter
-    App.DronesFilter.set('content',[<%= categories.map {|c| "category_#{c}" }.join(',') %>]);
-    App.DronesFilter.appendTo('#filter');
-
-    // show the list
-    App.DronesFilter.filter('a');
-    App.DronesView.appendTo('#content');
+    //
+    App.DronesDependencyView.appendTo('#content');
+    App.DronesListView.appendTo('#filter');
 
   }
 });
 
+    // create filter
+    //App.DronesFilter.set('content',[<%= categories.map {|c| "category_#{c}" }.join(',') %>]);
 

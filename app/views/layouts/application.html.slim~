@@ -13,17 +13,7 @@ html
           .span4.offset3
             h3
               small AppDrone: 
-              | {X} templates served
+              = pluralize(AppTemplate.all.count,'template') + ' served'
             
     .container
-      br
-      .row
-        .span8.offset4
-          h1 Choose your weapons &hellip;
-      br
-      .row
-        .span1.offset3
-          #filter
-        .span7
-          #content
-            = yield
+      = yield

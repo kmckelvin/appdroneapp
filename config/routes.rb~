@@ -2,7 +2,7 @@ Appdroneapp::Application.routes.draw do
   get '/ember', to: 'ember#new'
   get :new, to: 'app_template#new'
   get :build, to: 'app_template#build'
-  get '/:uuid(.:format)', to: 'app_template#show', as: :app_template
+  get '/:uuid(.:format)', to: 'app_template#show', as: :template
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

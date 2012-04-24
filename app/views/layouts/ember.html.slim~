@@ -4,6 +4,7 @@ html
     title appdroneapp
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
+    = javascript_include_tag 'ember/appdroneapp'
     = csrf_meta_tags
 
   body class=controller_name
@@ -16,4 +17,15 @@ html
               = pluralize(AppTemplate.all.count,'template') + ' served'
             
     .container
-      = yield
+      br
+      .row
+        .span8
+          h1 Choose your weapons&hellip;
+      br
+      .row
+        .span6
+          #content
+            = yield
+        .span6
+          #filter
+

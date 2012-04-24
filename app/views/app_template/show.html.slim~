@@ -1,0 +1,6 @@
+h1 Your template is ready!
+
+.well
+  | rails new AppName --builder=
+  - url = template_url(uuid: @template.uuid, format: 'rb')
+  = link_to url, url

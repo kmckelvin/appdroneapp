@@ -1,0 +1,3 @@
+{{#if content.active}}
+  {{content.name}}
+{{/if}}

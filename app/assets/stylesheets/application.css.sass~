@@ -31,12 +31,8 @@ i[rel=tooltip]
   &:hover
     color: blue
 
-
 /* ember */
-#filter
-  text-align: right
-  a.btn
-    margin: 5px
+
 
 /* weapons */
 nav.category_filter
@@ -44,36 +40,26 @@ nav.category_filter
     text-transform: uppercase
 
 section.drone
-  border: 1px solid #ccc
-  background-color: white
-
   padding: 5px 5px 5px 10px
   margin: 0
 
-  +border-radius(0)
-  +opacity(0.55)
   +box-shadow(0px 0px 3px #ccc)
+  background-color: transparent
 
-  +transition(border-radius 1s)
-  +transition(opacity 0.3s)
-  +transition(box-shadow 0.3s)
+  +transition-property(box-shadow)
+  +transition-property(background-color)
+  +transition-duration(1s)
+
+  &.active
+    background-color: white
+    margin: 10px 0
+    +box-shadow(0px 0px 4px yellow) 
+
+  .btn.active
+    +transition(background 1s)
 
   .name
     color: #333
-
-  &.active
-    margin: 10px 0
-    +border-radius(10px)
-    +opacity(1)
-    +box-shadow(0px 0px 4px yellow)
-    +transition(border-radius 1s)
-    +transition(opacity 0.3s)
-    +transition(box-shadow 0.3s)
-    
-
-  .btn.active
-    +transition(background-color 0.3s)
-
 
   .category
     font-size: 60%
