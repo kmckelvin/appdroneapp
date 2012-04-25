@@ -19,10 +19,6 @@ html
     .container
       br
       .row
-        .span8
-          h1 Choose your weapons&hellip;
-      br
-      .row
         .span6
           #content
             = yield

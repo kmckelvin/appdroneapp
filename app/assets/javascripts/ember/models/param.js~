@@ -1,3 +1,6 @@
 App.Param = Ember.Object.extend({
-
+  toggleClass: function() {
+    this.get('value') == true ? 'btn-primary' : '';
+  }
+  toggle: function() {
 });

@@ -1,0 +1,6 @@
+App.DronesCompileView = Ember.View.create({
+  templateName: 'ember/templates/compile',
+  compile: function() {
+    var drones = App.dronesController.get('activeDrones');
+  }
+});

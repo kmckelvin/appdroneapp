@@ -1,3 +1,3 @@
-App.DroneCompactView = Ember.View.extend({
+App.DroneParamView = Ember.View.extend({
   templateName: 'ember/templates/drone-compact',
 })

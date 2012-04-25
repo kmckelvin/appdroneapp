@@ -1,0 +1,5 @@
+App.ParamView = Ember.View.extend({
+  alert: function() {
+    alert(this.get('content'));
+  }
+});
