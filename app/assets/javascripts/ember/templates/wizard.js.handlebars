@@ -1,27 +1,19 @@
-<div class="btn-group wizard-steps">
-  <button {{bindAttr class="chooseDronesClass"}} {{action "chooseDrones"}}>
-    <i class="icon-th-list"></i>&nbsp;
-    Choose
-  </button>
-  <button {{bindAttr class="configureDronesClass"}} {{action "configureDrones"}}>
-    <i class="icon-cogs"></i>&nbsp;
-    Configure
-  </button>
-  <button {{bindAttr class="compileDronesClass"}} {{action "compileDrones"}}>
-    {{#if App.compileController.isBusy}}
-      <i class="icon-asterisk"></i>&nbsp;
-      Busy...
-    {{else}}
-      <i class="icon-share-alt"></i>&nbsp;
-      Compile
-    {{/if}}
-  </button>
-</div>
+<button {{bindAttr class="chooseDronesClass"}} {{action "chooseDrones"}}>
+  <i class="icon-th-list"></i>&nbsp;
+  Choose
+</button>
 
-{{#if choosingDrones}}
-  <nav class="nav nav-tabs category-filter">
-  {{#each App.categories}}
-    {{view App.CategoryView contentBinding="this"}}
-  {{/each}}
-  </nav>
-{{/if}}
+<button {{bindAttr class="configureDronesClass"}} {{action "configureDrones"}}>
+  <i class="icon-cogs"></i>&nbsp;
+  Configure
+</button>
+
+<button {{bindAttr class="compileDronesClass"}} {{action "compileDrones"}}>
+  {{#if App.compileController.isBusy}}
+    <i class="icon-asterisk"></i>&nbsp;
+    Busy...
+  {{else}}
+    <i class="icon-share-alt"></i>&nbsp;
+    Compile
+  {{/if}}
+</button>

@@ -1,9 +1,12 @@
+- content_for :main_nav do
+  = link_to '<i class="icon-plus"></i>&nbsp;New template'.html_safe, '/new', class: 'btn btn-large btn-inverse', confirm: 'Are you sure?'
+
+
 .pull-right
   span#copySuccess Done :)
-  a.btn.btn-large.btn-success id='copy'
+  a.btn.btn-success id='copy'
     | Copy to clipboard
-  | &nbsp;&nbsp;
-  = link_to '<i class="icon-plus"></i>&nbsp;New template'.html_safe, '/', class: 'btn btn-large btn-inverse', confirm: 'Are you sure?'
+
 
 h2 Your template is ready!
 
@@ -15,6 +18,8 @@ br
   | rails new AppName --builder=
   - url = app_template_url(uuid: @app_template.uuid, format: 'rb')
   = link_to url, url
+
+
 
 #codeSnippet.hide
   | rails new AppName --builder=

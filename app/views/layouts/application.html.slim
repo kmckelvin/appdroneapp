@@ -9,23 +9,37 @@ html
     = csrf_meta_tags
 
   body class=controller_name
-    .header
+    #root
+      .header
+        .container
+          .row
+            .span8.offset2
+              h2
+                strong AppDrone: 
+                span.light = pluralize(AppTemplate.all.count,'template') + ' served.'
+          .row
+            .span8.offset2#mainNav
+              = yield :main_nav
+
       .container
         .row
-          .span8.offset2
-            h3
-              strong AppDrone: 
-              span.light = pluralize(AppTemplate.all.count,'template') + ' served.'
+          #content.span8.offset2
+            br
+            = yield
+
             
-    .container
-      .row
-        #content.span8.offset2
-          br
-          = yield
-      .row
-        .span8.offset2
-          br
-          strong Footer goes here
-          br
-          br
+      #root_footer
+
+    #footer
+      .container
+        .row
+          .span8.offset2 style='padding-top:15px'
+            - gemspec = Gem.loaded_specs['app_drone']
+            strong = gemspec.name
+            | &mdash;
+            = gemspec.version
+            .pull-right
+              i.icon-github-sign
+              | &nbsp;&nbsp;
+              = link_to 'jeriko', 'https://github.com/jeriko'
           

@@ -1,11 +1,13 @@
 App.WizardView = Ember.View.create({
   templateName: 'ember/templates/wizard',
   activeState: null,
+  classNames: ['btn-group','wizard-steps'],
 
   choosingDrones: function() { return this.get('activeState') == 'choose' }.property('activeState'),
 
   chooseDrones: function() {
     if(this.get('activeState') == 'choose') { return }
+    App.DronesFilter.appendTo('#content');
     App.DronesDependencyView.appendTo('#content');
     App.DronesParamsView.remove();
     this.set('activeState','choose');
@@ -14,14 +16,16 @@ App.WizardView = Ember.View.create({
   configureDrones: function() {
     if(this.get('activeState') == 'configure') { return }
     App.DronesDependencyView.remove();
+    App.DronesFilter.remove();
     App.DronesParamsView.appendTo('#content');
     this.set('activeState','configure');
   },
 
   compileDrones: function() {
     if(this.get('activeState') == 'compile') { return }
-    App.DronesDependencyView.remove();
-    App.DronesParamsView.remove();
+    //App.DronesDependencyView.remove();
+    //App.DronesFilter.remove();
+    //App.DronesParamsView.remove();
     this.set('activeState','compile');
     App.compileController.compile();
   },

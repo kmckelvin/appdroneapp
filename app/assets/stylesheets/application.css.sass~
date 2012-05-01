@@ -4,22 +4,44 @@
 @import 'compass'
 @import 'compass_twitter_bootstrap_awesome'
 @import 'compass_twitter_bootstrap_responsive'
+@import 'compass/layout/sticky-footer'
+
+@mixin mast-bg
+  +background(linear-gradient(top left, #ba2c16, #ef7715 30%, #ba2c16))
+
+$content-bg: #f0f0f0
 
 body
-  background-color: #f0f0f0
+  background-color: $content-bg
 
 *
   font-family: 'Exo'!important
 
 /* header */
 .header
-  padding: 20px
-  background-color: #e03e21
-  +box-shadow(0px 1px 4px #333)
-  h3
+  padding-top: 15px
+  padding-bottom: 10px
+  +mast-bg
+  +box-shadow(0px 1px 3px #333)
+  h2
     color: white
+    margin-top: 5px
     span.light
       font-weight: normal
+
+  #mainNav
+    padding-top: 10px
+
+/* footer */
++sticky-footer(50px)
+#root_footer
+  margin-top: 40px
+#footer
+  +mast-bg
+  +box-shadow(0px -1px 3px #333)
+  color: white
+  a
+    color: white
 
 /* template */
 form.drone-form
@@ -40,7 +62,6 @@ i[rel=tooltip]
 /* ember */
 
 .wizard-steps
-  margin-bottom: 10px
   .btn.active
     +transition(background 0.3s)
 
