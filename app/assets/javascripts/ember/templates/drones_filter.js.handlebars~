@@ -1,6 +1,6 @@
 {{#if App.WizardView.choosingDrones}}
   <nav class="nav nav-pills category-filter">
-  {{#each App.categories}}
+  {{#each App.categoriesController.categories}}
     {{view App.CategoryView contentBinding="this"}}
   {{/each}}
   </nav>

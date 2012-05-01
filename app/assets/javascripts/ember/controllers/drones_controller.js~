@@ -1,5 +1,5 @@
 App.dronesController = Ember.Object.create({
-  dronesBinding: 'App.drones',
+  drones: [],
 
   activeDrones: function() {
     return this.get('drones').filterProperty('active',true);

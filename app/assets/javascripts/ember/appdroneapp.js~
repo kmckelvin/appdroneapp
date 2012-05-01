@@ -8,7 +8,9 @@
 App = Ember.Application.create({
   ready: function() {
     this._super();
-    App.categoryController.select(App.get('categories')[0]);
+    App.dronesControllser.set('drones',drones);
+    App.categoryController.set('categories',categories);
+    App.categoryController.select(App.categoryController.get('categories')[0]);
     App.WizardView.appendTo('#mainNav');
     App.WizardView.chooseDrones();
   }

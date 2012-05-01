@@ -43,7 +43,4 @@
 // ----------------------
     // store drones (LATER this should be an AJAX 'GET')
     drones = [<%= drones.map { |d| "drone_#{d.to_sym}" }.join(',') %>];
-    App.set('drones',drones);
-
     categories = [<%= categories.map { |c| "category_#{c}" }.join(',') %>];
-    App.set('categories',categories);

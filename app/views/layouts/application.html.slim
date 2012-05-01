@@ -3,7 +3,7 @@ html
   head
     title appdroneapp
     = stylesheet_link_tag    'application', media: 'all'
-    = stylesheet_link_tag    'http://fonts.googleapis.com/css?family=Exo'
+    - stylesheet_link_tag    'http://fonts.googleapis.com/css?family=Exo'
     = javascript_include_tag 'application', debug: false
     = javascript_include_tag 'ember/appdroneapp' if @ember
     = csrf_meta_tags

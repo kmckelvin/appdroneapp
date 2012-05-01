@@ -3,7 +3,7 @@ html
   head
     title appdroneapp
     = stylesheet_link_tag    'application', media: 'all'
-    = stylesheet_link_tag    'http://fonts.googleapis.com/css?family=Exo'
+    - stylesheet_link_tag    'http://fonts.googleapis.com/css?family=Exo'
     = javascript_include_tag 'application', debug: false
     = javascript_include_tag 'ember/appdroneapp' if @ember
     = csrf_meta_tags
@@ -13,12 +13,12 @@ html
       .header
         .container
           .row
-            .span12
+            .span8.offset2
               h2
                 strong AppDrone: 
                 span.light = pluralize(AppTemplate.all.count,'template') + ' served.'
           .row
-            .span12#mainNav
+            .span8.offset2#mainNav
               = yield :main_nav
 
       .container
