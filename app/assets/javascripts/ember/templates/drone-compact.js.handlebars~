@@ -1,19 +1,17 @@
-<section>
-  <h3>
-    <span class="name">{{content.name}}</span>
+{{#with drone}}
+  <h2>{{name}}</h2>
 
-  </h3>
-  <ul>
-    {{#each content.params}}
-      <li>
-        <strong>{{name}}</strong>
-        ({{type}})
-        = {{val}}
-      </li>
-    {{/each}}
+  {{#each params}}
+    <div class="param">
+      {{#if isBooleanParam}}
+        {{view App.BooleanParamView contentBinding="this"}}
+        <span class="hint">{{opts.info}}</span>
+        <br />
+      {{/if}}
+      {{#if isChooseManyParam}}
+        {{view App.ChooseManyParamView contentBinding="this"}}
+      {{/if}}
+    </div>
+  {{/each}}
 
-  </ul>
-
-
-</section>
-
+{{/with}}

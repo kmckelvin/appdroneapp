@@ -1,0 +1,9 @@
+<fieldset>
+  <legend>{{content.name}}</legend>
+
+  <div class="hint">{{content.opts.info}}</div>
+
+  {{#each content.choices}}
+    {{view App.BooleanParamView contentBinding="this"}}
+  {{/each}}
+</fieldset>

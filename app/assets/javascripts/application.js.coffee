@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery.zclip
 //= require chosen-jquery
 //= require ember
 //= require bootstrap-tab

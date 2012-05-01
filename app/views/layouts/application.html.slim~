@@ -3,17 +3,29 @@ html
   head
     title appdroneapp
     = stylesheet_link_tag    'application', media: 'all'
-    = javascript_include_tag 'application'
+    = stylesheet_link_tag    'http://fonts.googleapis.com/css?family=Exo'
+    = javascript_include_tag 'application', debug: false
+    = javascript_include_tag 'ember/appdroneapp' if @ember
     = csrf_meta_tags
 
   body class=controller_name
     .header
       .container
         .row
-          .span4.offset3
+          .span8.offset2
             h3
-              small AppDrone: 
-              = pluralize(AppTemplate.all.count,'template') + ' served'
+              strong AppDrone: 
+              span.light = pluralize(AppTemplate.all.count,'template') + ' served.'
             
     .container
-      = yield
+      .row
+        #content.span8.offset2
+          br
+          = yield
+      .row
+        .span8.offset2
+          br
+          strong Footer goes here
+          br
+                br
+          

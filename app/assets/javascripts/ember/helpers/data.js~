@@ -1,0 +1,49 @@
+    <% categories = AppDrone::Drone.categories.sort %>
+    <% categories.each.with_index do |category| %>
+    var category_<%= category %> = App.Category.create({ name: '<%= category %>' });
+    <% end %>
+
+    // load drones
+    <%
+    drones = AppDrone::Drone.drones.map(&:to_app_drone_class).sort_by { |d| d.category.to_s + d.human_name }
+    drones = drones.sort_by { |d| d.category }
+    drones = AppDrone::DependencyChain.sort(drones)
+
+    %>
+
+    <% drones.each do |drone| %>
+    var drone_<%= drone.to_sym %> = App.Drone.create({ name: '<%= drone.human_name %>', 
+      desc: "<%= drone.desc %>", category: category_<%= drone.category %>, active: true,
+      params: [
+        <% drone.params.each do |p| %>
+          <% choices = p.options[:choices] || [] %>
+          <% choices = choices.map {|c| "App.BooleanParam.create({name: '#{c}'})" }%>
+          App.<%= p.type.to_s.classify %>Param.create({ name: '<%= p.name %>', type: '<%= p.type %>', opts: <%= p.options.to_json %>, choices: [<%= choices.join(',') %>] }),
+        <% end %>
+        ]
+      });
+    <% end %>
+
+
+    // DEPENDENCIES
+    <% drones.each do |drone| %>
+      <% unless drone.dependencies.empty? %>
+        drone_<%= drone.to_sym %>.set('dependencies',[<%= drone.dependencies.map {|d| "drone_#{d.to_sym}" }.join(',') %>]);
+      <% end %>
+    <% end %>
+    
+    // DEPENDANTS
+    // should happen automatically:
+    <% drones.each do |drone| %>
+      <% unless drone.dependants.empty? %>
+        drone_<%= drone.to_sym %>.set('dependants',[<%= drone.dependants.map {|d| "drone_#{d.to_sym}" }.join(',') %>]);
+      <% end %>
+    <% end %>
+
+// ----------------------
+    // store drones (LATER this should be an AJAX 'GET')
+    drones = [<%= drones.map { |d| "drone_#{d.to_sym}" }.join(',') %>];
+    App.set('drones',drones);
+
+    categories = [<%= categories.map { |c| "category_#{c}" }.join(',') %>];
+    App.set('categories',categories);

@@ -1,27 +1,2 @@
-doctype 5
-html
-  head
-    title appdroneapp
-    = stylesheet_link_tag    'application', media: 'all'
-    = javascript_include_tag 'application'
-    = javascript_include_tag 'ember/appdroneapp'
-    = csrf_meta_tags
-
-  body class=controller_name
-    .header
-      .container
-        .row
-          .span4.offset3
-            h3
-              small AppDrone: 
-              = pluralize(AppTemplate.all.count,'template') + ' served'
-            
-    .container
-      br
-      .row
-        .span6
-          #content
-            = yield
-        .span6
-          #filter
-
+- @ember = true
+= render template: 'layouts/application'

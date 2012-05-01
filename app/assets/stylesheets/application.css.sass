@@ -8,12 +8,18 @@
 body
   background-color: #f0f0f0
 
+*
+  font-family: 'Exo'!important
 
 /* header */
 .header
-  background-color: #909bdb
-  h3, small
+  padding: 20px
+  background-color: #e03e21
+  +box-shadow(0px 1px 3px #333)
+  h3
     color: white
+    span.light
+      font-weight: normal
 
 /* template */
 form.drone-form
@@ -33,13 +39,50 @@ i[rel=tooltip]
 
 /* ember */
 
+.wizard-steps
+  margin-bottom: 10px
+  .btn.active
+    +transition(background 0.3s)
+
+.generatorCodeSnippet
+  background-color: #fcfcfc
+
+.droneConfig
+  border: 1px dashed #ccc
+  background-color: #fcfcfc
+  padding: 10px
+  margin: 10px
+  margin-left: 0
+  h2
+    margin-bottom: 10px
+  .param
+    margin-bottom: 5px
+    .hint
+      color: #888
+      margin-left: 10px
+      font-style: italic
+      font-size: 14px
+    fieldset
+      margin-top: 15px
+      .hint
+        padding: 10px
+        padding-left: 0
+        margin: 0
+    .btn
+      margin: 2px
+      &.active
+        +transition(background 1s)
+
 
 /* weapons */
-nav.category_filter
+nav.category-filter
+  li
+    cursor: pointer
   li a
+    +transition(background 0.3s)
     text-transform: uppercase
 
-section.drone
+.drone
   padding: 5px 5px 5px 10px
   margin: 0
 
@@ -48,7 +91,7 @@ section.drone
 
   +transition-property(box-shadow)
   +transition-property(background-color)
-  +transition-duration(1s)
+  +transition-duration(0.6s)
 
   &.active
     background-color: white
@@ -56,7 +99,7 @@ section.drone
     +box-shadow(0px 0px 4px yellow) 
 
   .btn.active
-    +transition(background 1s)
+    +transition(background 0.6s)
 
   .name
     color: #333
@@ -80,6 +123,15 @@ section.drone
     color: #555
     font-style: italic
     font-size: 110%
+
+
+/* template show */
+#copySuccess
+  +inline-block
+  margin-right: 10px
+  color: green
+  font-size: 17px
+  vertical-align: center
 
 /* discrete modal */
 .modal.modal-discrete

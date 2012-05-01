@@ -1,6 +1,33 @@
-h1 Your template is ready!
+.pull-right
+  span#copySuccess Done :)
+  a.btn.btn-large.btn-success id='copy'
+    | Copy to clipboard
+  | &nbsp;&nbsp;
+  = link_to '<i class="icon-plus"></i>&nbsp;New template'.html_safe, '/', class: 'btn btn-large btn-inverse', confirm: 'Are you sure?'
 
-.well
+h2 Your template is ready!
+
+br
+
+.well.generatorCodeSnippet
+  strong $
+  | &nbsp;&nbsp;
   | rails new AppName --builder=
-  - url = template_url(uuid: @template.uuid, format: 'rb')
+  - url = app_template_url(uuid: @app_template.uuid, format: 'rb')
   = link_to url, url
+
+#codeSnippet.hide
+  | rails new AppName --builder=
+  = app_template_url(uuid: @app_template.uuid, format: 'rb')
+
+javascript:
+  $(function() {
+    $('#copySuccess').hide();
+    $('a#copy').zclip({
+      path: '#{asset_path("ZeroClipboard.swf").html_safe}',
+      copy: $('#codeSnippet').html(),
+      afterCopy: function() {
+        $('#copySuccess').show().fadeOut(2000);
+      }
+    });
+  });

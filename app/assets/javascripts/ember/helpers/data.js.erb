@@ -1,16 +1,6 @@
-#= require_self
-#= require_tree ./models
-#= require_tree ./controllers
-#= require_tree ./views
-#= require_tree ./helpers
-#= require_tree ./templates
-
-App = Ember.Application.create({
-  ready: function() {
-    // load categories
     <% categories = AppDrone::Drone.categories.sort %>
     <% categories.each.with_index do |category| %>
-    var category_<%= category%> = App.Category.create({ name: '<%= category %>' });
+    var category_<%= category %> = App.Category.create({ name: '<%= category %>' });
     <% end %>
 
     // load drones
@@ -23,10 +13,12 @@ App = Ember.Application.create({
 
     <% drones.each do |drone| %>
     var drone_<%= drone.to_sym %> = App.Drone.create({ name: '<%= drone.human_name %>', 
-      desc: "<%= drone.desc %>", category: category_<%= drone.category %>, active: true,
+      desc: "<%= drone.desc %>", category: category_<%= drone.category %>, active: false,
       params: [
         <% drone.params.each do |p| %>
-          App.Param.create({ name: '<%= p.name %>', type: '<%= p.type %>', opts: <%= p.options.to_json %> }),
+          <% choices = p.options[:choices] || [] %>
+          <% choices = choices.map {|c| "App.BooleanParam.create({name: '#{c}'})" }%>
+          App.<%= p.type.to_s.classify %>Param.create({ name: '<%= p.name %>', type: '<%= p.type %>', opts: <%= p.options.to_json %>, choices: [<%= choices.join(',') %>] }),
         <% end %>
         ]
       });
@@ -48,16 +40,10 @@ App = Ember.Application.create({
       <% end %>
     <% end %>
 
-    drones = [<%= drones.map { |d| "drone_#{d.to_sym}" }.join(',') %>];
 // ----------------------
     // store drones (LATER this should be an AJAX 'GET')
-    App.dronesController.set('drones',drones);
+    drones = [<%= drones.map { |d| "drone_#{d.to_sym}" }.join(',') %>];
+    App.set('drones',drones);
 
-    App.WizardView.appendTo('#content');
-    App.WizardView.chooseDrones();
-  }
-});
-
-    // create filter
-    //App.DronesFilter.set('content',[<%= categories.map {|c| "category_#{c}" }.join(',') %>]);
-
+    categories = [<%= categories.map { |c| "category_#{c}" }.join(',') %>];
+    App.set('categories',categories);

@@ -1,47 +1,27 @@
-<section {{bindAttr class="droneClass"}}>
-  <h3>
-    <button {{bindAttr class="toggleButtonClass"}} {{action "toggle"}}>
-      <i {{bindAttr class="toggleIconClass"}}></i>
-    </button>
+<h3>
+  <button {{bindAttr class="toggleButtonClass"}} {{action "toggle"}}>
+    <i {{bindAttr class="toggleIconClass"}}></i>
+  </button>
 
-    &nbsp;
+  &nbsp;
 
-    <span class="name">{{content.name}}</span>
+  {{#with drone}}
+    <span class="name">{{name}}</span>
 
     <span class="stats">
-      {{#if content.hasActiveDependants}}
-        <i class='icon-lock'>
-          {{content.activeDependantCount}}
-        </i>
+      {{#if hasActiveDependants}}<i class='icon-lock'>{{activeDependantCount}}</i>{{/if}}
+      {{#if hasDependencies}}
+         <i class="icon-external-link" rel="tooltip" title="tooltip">{{activeDependencyCount}}/{{dependencyCount}}</i>
       {{/if}}
-
-      {{#if content.hasDependencies}}
-        <i class="icon-external-link" rel="tooltip" title="tooltip">
-          {{content.activeDependencyCount}}/{{content.dependencyCount}}
-        </i>
-      {{/if}}
-
-      {{#if content.hasPairs}}
-        <i class="icon-heart" rel="tooltip" title="tooltip">
-          {{content.pairCount}}
-        </i>
-      {{/if}}
-
-      {{#if content.hasParams}}
-        <i class="icon-list" rel="tooltip" title="tooltip">
-          {{content.paramCount}}
-        </i>
-      {{/if}}
+      {{#if hasPairs}}<i class="icon-heart" rel="tooltip" title="tooltip">{{pairCount}}</i>{{/if}}
+      {{#if hasParams}}<i class="icon-list" rel="tooltip" title="tooltip">{{paramCount}}</i>{{/if}}
     </span>
 
-    <small class="category pull-right">
-      {{content.category.name}}
-    </small>
-  </h3>
+    <small class="category pull-right">{{category.name}}</small>
+  {{/with}}
 
-  <p class="desc">
-    {{content.desc}}
-  </p>
+</h3>
 
-</section>
-
+<p class="desc">
+  {{drone.desc}}
+</p>
