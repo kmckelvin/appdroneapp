@@ -7,7 +7,7 @@
 @import 'compass/layout/sticky-footer'
 
 @mixin mast-bg
-  +background(linear-gradient(top left, #ba2c16, #ef7715 30%, #ba2c16))
+  +background(linear-gradient(top left, #ba2c16, #ef7715 35%, #ba2c16))
 
 $content-bg: #f0f0f0
 
@@ -22,15 +22,22 @@ body
   padding-top: 15px
   padding-bottom: 10px
   +mast-bg
-  +box-shadow(0px 1px 3px #333)
+  +box-shadow(0px 1px 6px #333)
   h2
     color: white
     margin-top: 5px
+    +inline-block
     span.light
       font-weight: normal
+      font-size: 20px
 
   #mainNav
     padding-top: 10px
+
+  .tweet_button
+    +inline-block
+    margin-left: 15px
+    margin-top: 11px
 
 /* footer */
 +sticky-footer(50px)
@@ -40,8 +47,9 @@ body
   +mast-bg
   +box-shadow(0px -1px 3px #333)
   color: white
-  a
+  .repo-link
     color: white
+    text-decoration: underline
 
 /* template */
 form.drone-form
@@ -64,9 +72,6 @@ i[rel=tooltip]
 .wizard-steps
   .btn.active
     +transition(background 0.3s)
-
-.generatorCodeSnippet
-  background-color: #fcfcfc
 
 .droneConfig
   border: 1px dashed #ccc
@@ -147,12 +152,24 @@ nav.category-filter
 
 
 /* template show */
-#copySuccess
+header.app_template
+  margin-bottom: 5px
+  h2
+    +inline-block
+
+.clipboard-controls
   +inline-block
-  margin-right: 10px
-  color: green
-  font-size: 17px
-  vertical-align: center
+  #copySuccess
+    +inline-block
+    margin-left: 10px
+    color: green
+    vertical-align: center
+
+.generatorCodeSnippet
+  background-color: #fcfcfc
+  input.app_name
+    margin: 0 5px
+    width: 120px
 
 /* discrete modal */
 .modal.modal-discrete

@@ -1,36 +1,39 @@
 - content_for :main_nav do
-  = link_to '<i class="icon-plus"></i>&nbsp;New template'.html_safe, '/new', class: 'btn btn-large btn-inverse', confirm: 'Are you sure?'
+  = link_to '<i class="icon-plus"></i>&nbsp;New template'.html_safe, '/new', class: 'btn btn-large btn-inverse'
 
 
-.pull-right
-  span#copySuccess Done :)
-  a.btn.btn-success id='copy'
-    | Copy to clipboard
 
-
-h2 Your template is ready!
-
-br
+header.app_template
+  h2 Your template is ready!
 
 .well.generatorCodeSnippet
   strong $
   | &nbsp;&nbsp;
-  | rails new AppName --builder=
-  - url = app_template_url(uuid: @app_template.uuid, format: 'rb')
-  = link_to url, url
+  span#codeSnippet
+    span.snippetBefore rails new 
+    span.snippetAppName.hide AppName 
+    input.app_name type='text' placeholder='AppName'
+    span.snippetAfter
+      | --builder=
+      - url = app_template_url(uuid: @app_template.uuid, format: 'rb')
+      = link_to url, url
 
-
-
-#codeSnippet.hide
-  | rails new AppName --builder=
-  = app_template_url(uuid: @app_template.uuid, format: 'rb')
+span.clipboard-controls
+  a.btn.btn-success id='copy'
+    | Copy to clipboard
+  span#copySuccess Done :)
 
 javascript:
   $(function() {
     $('#copySuccess').hide();
     $('a#copy').zclip({
       path: '#{asset_path("ZeroClipboard.swf").html_safe}',
-      copy: $('#codeSnippet').html(),
+      copy: function(){
+        var text = $('#codeSnippet').text();
+        var app_name = $('input.app_name').val();
+        if(app_name != "") { text = text.replace('AppName',app_name); }
+        return text;
+      },
       afterCopy: function() {
         $('#copySuccess').show().fadeOut(2000);
       }
