@@ -14,7 +14,7 @@ App.compileController = Ember.Object.create({
     this.set('isBusy',true);
 
     $.ajax({
-      method: 'POST',
+      type: 'POST',
       url: '/build',
       data: { drones: d },
       success: function(path) {
