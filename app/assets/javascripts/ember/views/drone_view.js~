@@ -14,7 +14,7 @@ App.DroneView = Ember.View.extend({
       classes += ' active';
       classes += drone.get('locked') ? ' btn-danger' : ' btn-success';
     } else {
-      if(drone.get('available')) { classes += ' btn-inverse' }
+      if(!drone.get('available')) { classes += ' btn-inverse' }
     }
     return classes;
   }.property('drone.status'),

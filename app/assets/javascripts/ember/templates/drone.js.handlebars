@@ -1,12 +1,11 @@
-<h3>
-  <button {{bindAttr class="toggleButtonClass"}} {{action "toggle"}}>
-    <i {{bindAttr class="toggleIconClass"}}></i>
-  </button>
+<button {{bindAttr class="toggleButtonClass"}} {{action "toggle"}}>
+  <i {{bindAttr class="toggleIconClass"}}></i>
+</button>
 
-  &nbsp;
-
+<div class="card">
+<header>
   {{#with drone}}
-    <span class="name">{{name}}</span>
+    <h3 class="name">{{name}}</h3>
 
     <span class="stats">
       {{#if hasActiveDependants}}<i class='icon-lock'>&nbsp;{{activeDependantCount}}</i>{{/if}}
@@ -17,11 +16,10 @@
       {{#if hasParams}}<i class="icon-list" rel="tooltip" title="tooltip">&nbsp;{{paramCount}}</i>{{/if}}
     </span>
 
-    <small class="category pull-right">{{category.name}}</small>
   {{/with}}
-
-</h3>
+</header>
 
 <p class="desc">
   {{drone.desc}}
 </p>
+</div>

@@ -40,7 +40,7 @@ html
 
     #footer
       .container
-        .row style='padding-top: 10px'
+        .row
           .span4.offset2
             - gemspec = Gem.loaded_specs['app_drone']
             = link_to 'https://github.com/jeriko/app_drone', target: '_blank', rel: 'tooltip', class: 'repo-link', title: 'Gem source code on GitHub' do
@@ -50,12 +50,17 @@ html
             br
             em powered by Ember.js
           .span4 style='padding-top: 7px'
-            .pull-right
-              = link_to 'https://github.com/jeriko', target: '_blank', class: 'btn btn-mini', rel: 'tooltip', title: 'Find me on GitHub' do
+            = link_to 'https://twitter.com/whoisdandavey', target: '_blank', class: 'btn btn-mini', rel: 'tooltip', title: 'Find me on Twitter' do
+                i.icon-twitter-sign
+                |  whoisdandavey
+
+            | &nbsp;
+
+            = link_to 'https://github.com/jeriko', target: '_blank', class: 'btn btn-mini', rel: 'tooltip', title: 'Fork me on GitHub' do
                 i.icon-github-sign
                 |  jeriko
-              | &nbsp;
-              = link_to 'https://twitter.com/whoisdandavey', target: '_blank', class: 'btn btn-mini', rel: 'tooltip', title: 'Find me on Twitter' do
-                i.icon-twitter-sign
-                |  @whoisdandavey
+
+            br
+            = link_to 'http://platform45.com', '', target: '_blank', class: 'platform45link', rel: 'tooltip', title: 'A <strong>platform45</strong> production'
+            
           
