@@ -9,12 +9,12 @@
     <span class="name">{{name}}</span>
 
     <span class="stats">
-      {{#if hasActiveDependants}}<i class='icon-lock'>{{activeDependantCount}}</i>{{/if}}
+      {{#if hasActiveDependants}}<i class='icon-lock'>&nbsp;{{activeDependantCount}}</i>{{/if}}
       {{#if hasDependencies}}
-         <i class="icon-external-link" rel="tooltip" title="tooltip">{{activeDependencyCount}}/{{dependencyCount}}</i>
+         <i class="icon-external-link" rel="tooltip" title="tooltip">&nbsp;{{activeDependencyCount}}/{{dependencyCount}}</i>
       {{/if}}
-      {{#if hasPairs}}<i class="icon-heart" rel="tooltip" title="tooltip">{{pairCount}}</i>{{/if}}
-      {{#if hasParams}}<i class="icon-list" rel="tooltip" title="tooltip">{{paramCount}}</i>{{/if}}
+      {{#if hasPairs}}<i class="icon-heart" rel="tooltip" title="tooltip">&nbsp;{{pairCount}}</i>{{/if}}
+      {{#if hasParams}}<i class="icon-list" rel="tooltip" title="tooltip">&nbsp;{{paramCount}}</i>{{/if}}
     </span>
 
     <small class="category pull-right">{{category.name}}</small>

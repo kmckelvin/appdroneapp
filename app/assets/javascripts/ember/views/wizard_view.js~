@@ -25,7 +25,7 @@ App.WizardView = Ember.View.create({
     if(this.get('activeState') == 'compile') { return }
     if(App.dronesController.get('activeDrones').length == 0) {
       $.gritter.add({
-	title: 'Nothing to compile!',
+	title: 'Nothing to compile&hellip';',
 	text: 'Choose some drones first.',
         time: 3000,
       });
@@ -38,8 +38,11 @@ App.WizardView = Ember.View.create({
     App.compileController.compile();
   },
 
-  chooseDronesClass: function() { return this.get('activeState') == 'choose' ? 'btn btn-large btn-inverse active' : 'btn btn-large' }.property('activeState'),
-  configureDronesClass: function() { return this.get('activeState') == 'configure' ? 'btn btn-large btn-inverse active' : 'btn btn-large' }.property('activeState'),
-  compileDronesClass: function() { return this.get('activeState') == 'compile' ? 'btn btn-large btn-inverse active' : 'btn btn-large' }.property('activeState'),
+  activeButtonClasses: 'btn btn-large btn-danger',
+  inactiveButtonClasses: 'btn btn-large btn-inverse active',
+
+  chooseDronesClass: function() { return this.get('activeState') == 'choose' ? this.get('activeButtonClasses') : this.get('inactiveButtonClasses') }.property('activeState'),
+  configureDronesClass: function() { return this.get('activeState') == 'configure' ? this.get('activeButtonClasses') : this.get('inactiveButtonClasses') }.property('activeState'),
+  compileDronesClass: function() { return this.get('activeState') == 'compile' ? this.get('activeButtonClasses') : this.get('inactiveButtonClasses') }.property('activeState'),
 
 });

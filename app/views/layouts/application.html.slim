@@ -1,7 +1,7 @@
 doctype 5
 html
   head
-    title AppDrone: Avoid the mundane.
+    title drone.bz | Avoid the mundane.
     = stylesheet_link_tag    'application', media: 'all'
     = stylesheet_link_tag    'http://fonts.googleapis.com/css?family=Exo|Contrail+One'
     = javascript_include_tag 'application', debug: false
@@ -15,7 +15,7 @@ html
           .row
             .span8.offset2
               h2#mastHead
-                strong [AppDrone] 
+                strong drone.bz
                 span.light Avoid the mundane.
 
           .row
@@ -33,7 +33,6 @@ html
       .container
         .row
           #content.span8.offset2
-            br
             = yield
 
             
@@ -41,7 +40,7 @@ html
 
     #footer
       .container
-        .row style='padding-top: 5px'
+        .row style='padding-top: 10px'
           .span4.offset2
             - gemspec = Gem.loaded_specs['app_drone']
             = link_to 'https://github.com/jeriko/app_drone', target: '_blank', rel: 'tooltip', class: 'repo-link', title: 'Gem source code on GitHub' do

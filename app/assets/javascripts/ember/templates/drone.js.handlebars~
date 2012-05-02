@@ -9,7 +9,7 @@
     <span class="name">{{name}}</span>
 
     <span class="stats">
-      {{#if hasActiveDependants}}<i class='icon-lock'>{{activeDependantCount}}</i>{{/if}}
+      {{#if hasActiveDependants}}<i class='icon-lock'>&nbsp;{{activeDependantCount}}</i>{{/if}}
       {{#if hasDependencies}}
          <i class="icon-external-link" rel="tooltip" title="tooltip">{{activeDependencyCount}}/{{dependencyCount}}</i>
       {{/if}}

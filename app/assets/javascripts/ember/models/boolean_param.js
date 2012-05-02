@@ -3,7 +3,7 @@ App.BooleanParam = Ember.Object.extend({
   value: false,
 
   toggleClass: function() {
-    return this.get('value') == true ? 'btn btn-success' : 'btn btn-inverse active';
+    return this.get('value') == true ? 'btn btn-success active' : 'btn btn-inverse';
   }.property('value'),
 
   toggle: function() {

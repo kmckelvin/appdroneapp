@@ -2,12 +2,14 @@
 /*= require_self */
 
 @import 'compass'
+$linkColor: #BD362F
 @import 'compass_twitter_bootstrap_awesome'
 @import 'compass_twitter_bootstrap_responsive'
 @import 'compass/layout/sticky-footer'
+@import 'gritter'
 
 @mixin mast-bg
-  +background(linear-gradient(top left, #ba2c16, #ef7715 35%, #ba2c16))
+  +background(linear-gradient(top left, #ba2c16, #ef7715 28%, #ba2c16))
 
 $content-bg: #f0f0f0
 
@@ -20,16 +22,17 @@ body
 /* header */
 .header
   padding-top: 15px
-  padding-bottom: 10px
+  padding-bottom: 15px
+  margin-bottom: 10px
   +mast-bg
-  +box-shadow(0px 1px 6px #333)
+  +box-shadow(0px -1px 10px #6B0702 inset)
   h2
     color: white
     +inline-block
     span.light
       font-weight: normal
       font-size: 20px
-      margin-left: 7px
+      margin-left: 16px
 
   .template-count
     color: #6b0702
@@ -39,6 +42,8 @@ body
       font-size: 22px
       color: white
       margin-right: 5px
+      +text-shadow(yellow 0 0 5px)
+      +text-shadow(black 0 0 2px)
       padding-left: 6px
       padding-right: 8px
       padding-top: 4px
@@ -56,6 +61,9 @@ body
 
   #mastHead
     margin: 10px 0 10px 0
+    strong
+      font-size: 30px
+      +text-shadow(#6B0702 1px 1px 0)
 
   #mainNav, #sideNav
     +inline-block
@@ -65,12 +73,12 @@ body
 
 
 /* footer */
-+sticky-footer(50px)
++sticky-footer(60px)
 #root_footer
   margin-top: 40px
 #footer
   +mast-bg
-  +box-shadow(0px -1px 3px #333)
+  +box-shadow(0px 1px 7px #333 inset)
   color: white
   .repo-link
     color: white
@@ -122,7 +130,7 @@ i[rel=tooltip]
     .btn
       margin: 2px
       &.active
-        +transition(background 1s)
+        +transition(background 0.7s)
 
 
 /* weapons */
@@ -142,7 +150,7 @@ nav.category-filter
 
   +transition-property(box-shadow)
   +transition-property(background-color)
-  +transition-duration(0.6s)
+  +transition-duration(0.5s)
 
   &.active
     background-color: white
@@ -161,6 +169,7 @@ nav.category-filter
 
   .stats
     margin-left: 20px
+    margin-top: 5px
     font-size: 60%
     +inline-block
     vertical-align: top
@@ -178,9 +187,8 @@ nav.category-filter
 
 /* template show */
 header.app_template
+  margin-top: 10px
   margin-bottom: 5px
-  h2
-    +inline-block
 
 .clipboard-controls
   +inline-block
