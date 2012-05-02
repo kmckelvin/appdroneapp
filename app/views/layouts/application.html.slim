@@ -1,9 +1,9 @@
 doctype 5
 html
   head
-    title appdroneapp
+    title AppDrone: Avoid the mundane.
     = stylesheet_link_tag    'application', media: 'all'
-    = stylesheet_link_tag    'http://fonts.googleapis.com/css?family=Exo'
+    = stylesheet_link_tag    'http://fonts.googleapis.com/css?family=Exo|Contrail+One'
     = javascript_include_tag 'application', debug: false
     = javascript_include_tag 'ember/appdroneapp' if @ember
     = csrf_meta_tags
@@ -13,17 +13,22 @@ html
       .header
         .container
           .row
-            .span6.offset2
-              h2
+            .span8.offset2
+              h2#mastHead
                 strong [AppDrone] 
-                span.light
-                  span.template-count = number_with_delimiter(AppTemplate.count)
-                  |  Rails templates served.
-              span.tweet_button = render partial: 'shared/tweet_button'
+                span.light Avoid the mundane.
 
           .row
-            .span8.offset2#mainNav
-              = yield :main_nav
+            .span8.offset2
+              #mainNav
+                = yield :main_nav
+              #sideNav
+                h2
+                  span.template-count
+                    span.template-count-number.label.label-important = number_with_delimiter(AppTemplate.count)
+                    |  Rails templates served.
+                span.tweet_button = render partial: 'shared/tweet_button'
+
 
       .container
         .row

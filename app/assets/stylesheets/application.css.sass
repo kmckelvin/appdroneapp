@@ -25,20 +25,44 @@ body
   +box-shadow(0px 1px 6px #333)
   h2
     color: white
-    margin-top: 5px
     +inline-block
     span.light
       font-weight: normal
       font-size: 20px
       margin-left: 7px
 
-  #mainNav
-    padding-top: 10px
+  .template-count
+    color: #6b0702
+    &, .template-count-number
+      font-family: 'Contrail One', cursive!important
+    .template-count-number
+      font-size: 22px
+      color: white
+      margin-right: 5px
+      padding-left: 6px
+      padding-right: 8px
+      padding-top: 4px
+      &:hover
+        // use bootstrap:label.important default bg color for no hover
+        background-color: #B94A48
+    font-weight: normal
+    font-size: 18px
 
   .tweet_button
     +inline-block
+    float: right
     margin-left: 15px
-    margin-top: 11px
+    margin-top: 10px
+
+  #mastHead
+    margin: 10px 0 10px 0
+
+  #mainNav, #sideNav
+    +inline-block
+  
+  #sideNav
+    margin-left: 20px
+
 
 /* footer */
 +sticky-footer(50px)
