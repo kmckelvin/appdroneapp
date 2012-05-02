@@ -1,4 +1,5 @@
     <% categories = AppDrone::Drone.categories.sort %>
+    <% categories.delete(:base); categories.unshift(:base) %>
     <% categories.each.with_index do |category| %>
     var category_<%= category %> = App.Category.create({ name: '<%= category %>' });
     <% end %>
