@@ -16,7 +16,9 @@ html
             .span6.offset2
               h2
                 strong [AppDrone] 
-                span.light = pluralize(AppTemplate.all.count,'template') + ' served.'
+                span.light
+                  span.template-count = number_with_delimiter(AppTemplate.count)
+                  |  Rails templates served.
               span.tweet_button = render partial: 'shared/tweet_button'
 
           .row
