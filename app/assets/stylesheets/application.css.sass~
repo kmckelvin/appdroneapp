@@ -43,7 +43,8 @@ body
       padding-right: 8px
       padding-top: 4px
       &:hover
-        background-color: #B94A48 // use bootstrap:label.important bg color
+        // use bootstrap:label.important default bg color for no hover
+        background-color: #B94A48
     font-weight: normal
     font-size: 18px
 

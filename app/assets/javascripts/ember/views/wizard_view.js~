@@ -24,7 +24,11 @@ App.WizardView = Ember.View.create({
   compileDrones: function() {
     if(this.get('activeState') == 'compile') { return }
     if(App.dronesController.get('activeDrones').length == 0) {
-      alert('Nothing to compile!');
+      $.gritter.add({
+	title: 'Nothing to compile!',
+	text: 'Choose some drones first.',
+        time: 3000,
+      });
       return
     }
     //App.DronesDependencyView.remove();

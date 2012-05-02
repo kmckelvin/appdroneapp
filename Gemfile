@@ -7,7 +7,6 @@ gem 'rails', '3.2.3'
 
 gem 'pg'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -46,3 +45,4 @@ gem "compass_twitter_bootstrap", :git => "git://github.com/vwall/compass-twitter
 gem "chosen-rails"
 gem "app_drone"
 gem "ember-rails"
+gem "gritter"

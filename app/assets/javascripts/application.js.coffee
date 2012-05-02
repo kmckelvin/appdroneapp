@@ -3,6 +3,7 @@
 //= require jquery.zclip
 //= require chosen-jquery
 //= require ember
+//= require gritter
 //= require bootstrap-tab
 //= require bootstrap-modal
 //= require bootstrap-dropdown
