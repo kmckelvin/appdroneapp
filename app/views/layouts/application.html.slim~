@@ -1,7 +1,7 @@
 doctype 5
 html
   head
-    title drone.bz | Avoid the mundane.
+    title drone.bz | Automate the mundane.
     = stylesheet_link_tag    'application', media: 'all'
     = stylesheet_link_tag    'http://fonts.googleapis.com/css?family=Exo|Contrail+One'
     = javascript_include_tag 'application'
@@ -16,7 +16,7 @@ html
             .span8.offset2
               h2#mastHead
                 strong drone.bz
-                span.light Avoid the mundane.
+                span.light Automate the mundane.
 
           .row
             .span8.offset2
@@ -32,7 +32,7 @@ html
 
       .container
         .row
-          .span8.offset2
+          #content.span8.offset2
             = yield
 
             
@@ -41,22 +41,22 @@ html
     #footer
       .container
         .row
-          .span4.offset2
+          .span5.offset2 style='padding-top: 12px'
             - gemspec = Gem.loaded_specs['app_drone']
             = link_to 'https://github.com/jeriko/app_drone', target: '_blank', rel: 'tooltip', class: 'repo-link', title: 'Gem source code on GitHub' do
               strong = gemspec.name + '.gem'
-              | &mdash;&nbsp;
+              | &nbsp;&mdash;&nbsp;
               = 'v ' + gemspec.version.to_s
             br
             em powered by Ember.js
-          .span4 style='padding-top: 7px'
+          .span3 style='padding-top: 12px; text-align:right'
             = link_to 'https://twitter.com/whoisdandavey', target: '_blank', class: 'btn btn-mini', rel: 'tooltip', title: 'Find me on Twitter' do
                 i.icon-twitter-sign
                 |  whoisdandavey
 
             | &nbsp;
 
-            = link_to 'https://github.com/jeriko', target: '_blank', class: 'btn btn-mini', rel: 'tooltip', title: 'Fork me on GitHub' do
+            = link_to 'https://github.com/jeriko', target: '_blank', class: 'btn btn-mini', rel: 'tooltip', title: 'Fork me on GitHub :P' do
                 i.icon-github-sign
                 |  jeriko
 
