@@ -1,4 +1,4 @@
-{{#if App.WizardView.choosingDrones}}
+{{#if App.WizardView.filterIsRelevant}}
   <nav class="nav nav-pills category-filter">
   {{#each App.categoryController.categories}}
     {{view App.CategoryView contentBinding="this"}}

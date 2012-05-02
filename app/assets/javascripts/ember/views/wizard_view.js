@@ -3,7 +3,10 @@ App.WizardView = Ember.View.create({
   activeState: null,
   classNames: ['btn-group','wizard-steps'],
 
-  choosingDrones: function() { return this.get('activeState') == 'choose' }.property('activeState'),
+  isChoosingDrones: function() { return this.get('activeState') == 'choose' }.property('activeState'),
+  isConfiguringDrones: function() { return this.get('activeState') == 'configure' }.property('activeState'),
+  isCompilingDrones: function() { return this.get('activeState') == 'compile' }.property('activeState'),
+  filterIsRelevant: function() { return this.get('isChoosingDrones') || this.get('isCompilingDrones') }.property('isChoosingDrones','isCompilingDrones'),
 
   chooseDrones: function() {
     if(this.get('activeState') == 'choose') { return }
