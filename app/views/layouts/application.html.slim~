@@ -14,9 +14,11 @@ html
         .container
           .row
             .span8.offset2
+
               h2#mastHead
                 strong drone.bz
                 span.light Automate the mundane.
+                
 
           .row
             .span8.offset2
@@ -61,6 +63,6 @@ html
                 |  jeriko
 
             br
-            = link_to 'http://platform45.com', '', target: '_blank', class: 'platform45link', rel: 'tooltip', title: 'A <strong>platform45</strong> production'
+            = link_to 'http://platform45.com', 'http://platform45.com', target: '_blank', class: 'platform45link', rel: 'tooltip', title: 'A <strong>platform45</strong> production'
             
           

@@ -17,9 +17,11 @@ html
               h2#mastHead
                 strong drone.bz
                 span.light Automate the mundane.
+                
 
           .row
             .span8.offset2
+              = image_tag image_path('logo.png'), class: 'ant-logo'
               #mainNav
                 = yield :main_nav
               #sideNav

@@ -22,7 +22,7 @@ body
 /* header */
 .header
   padding-top: 15px
-  padding-bottom: 15px
+  padding-bottom: 5px
   margin-bottom: 10px
   +mast-bg
   +box-shadow(0px -1px 10px #6B0702 inset)
@@ -32,7 +32,7 @@ body
     span.light
       font-weight: normal
       font-size: 20px
-      margin-left: 16px
+      margin-left: 15px
 
   .template-count
     color: #6b0702
@@ -59,7 +59,7 @@ body
     margin-top: 10px
 
   #mastHead
-    margin: 10px 0 10px 0
+    margin: 10px 0 0 0
     strong
       font-size: 30px
       +text-shadow(#6B0702 1px 1px 0)
@@ -70,6 +70,11 @@ body
   #sideNav
     margin-left: 20px
 
+  .ant-logo
+    +inline-block
+    width: 70px
+    margin-left: -85px
+    margin-right: 15px
 
 /* footer */
 +sticky-footer(60px)
