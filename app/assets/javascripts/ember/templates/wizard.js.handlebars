@@ -1,19 +1,26 @@
 <button {{bindAttr class="chooseDronesClass"}} {{action "chooseDrones"}}>
-  <i class="icon-th-list"></i>&nbsp;
+  1.&nbsp;
   Choose
+  &nbsp;
+  <i class="icon-th-list"></i>
 </button>
 
 <button {{bindAttr class="configureDronesClass"}} {{action "configureDrones"}}>
-  <i class="icon-cogs"></i>&nbsp;
+  2.&nbsp;
   Configure
+  &nbsp;
+  <i class="icon-cogs"></i>
 </button>
 
 <button {{bindAttr class="compileDronesClass"}} {{action "compileDrones"}}>
   {{#if App.compileController.isBusy}}
-    <i class="icon-asterisk"></i>&nbsp;
     Busy...
+    &nbsp;
+    <i class="icon-asterisk"></i>&nbsp;
   {{else}}
-    <i class="icon-share-alt"></i>&nbsp;
+    3.&nbsp;
     Compile
+    &nbsp;
+    <i class="icon-share-alt"></i>
   {{/if}}
 </button>
