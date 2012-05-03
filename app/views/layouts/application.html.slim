@@ -27,7 +27,7 @@ html
               #sideNav
                 h2
                   span.template-count
-                    span.template-count-number.label.label-important = number_with_delimiter(AppTemplate.count)
+                    span.template-count-number.label = number_with_delimiter(AppTemplate.count)
                     |  Rails templates served.
                 span.tweet_button = render partial: 'shared/tweet_button'
 
@@ -49,20 +49,16 @@ html
               strong = gemspec.name + '.gem'
               | &nbsp;&mdash;&nbsp;
               = 'v ' + gemspec.version.to_s
-            br
             em powered by Ember.js
-          .span3 style='padding-top: 12px; text-align:right'
+
+          .span3 style='padding-top: 11px; text-align: right'
             = link_to 'https://twitter.com/whoisdandavey', target: '_blank', class: 'btn btn-mini', rel: 'tooltip', title: 'Find me on Twitter' do
                 i.icon-twitter-sign
                 |  whoisdandavey
 
-            | &nbsp;
-
             = link_to 'https://github.com/jeriko', target: '_blank', class: 'btn btn-mini', rel: 'tooltip', title: 'Fork me on GitHub :P' do
                 i.icon-github-sign
                 |  jeriko
-
-            br
-            = link_to 'http://platform45.com', 'http://platform45.com', target: '_blank', class: 'platform45link', rel: 'tooltip', title: 'A <strong>platform45</strong> production'
-            
           
+          .span1
+            = link_to '', 'http://platform45.com', target: '_blank', class: 'platform45logo', rel: 'tooltip-right', title: 'A <strong>platform45</strong> production'

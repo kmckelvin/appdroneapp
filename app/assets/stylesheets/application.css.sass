@@ -46,9 +46,8 @@ body
       padding-left: 6px
       padding-right: 8px
       padding-top: 4px
-      &:hover
-        // use bootstrap:label.important default bg color for no hover
-        background-color: #B94A48
+      &, &:hover
+        background-color: #BD362F
     font-weight: normal
     font-size: 18px
 
@@ -77,23 +76,35 @@ body
     margin-right: 15px
 
 /* footer */
-+sticky-footer(60px)
++sticky-footer(40px)
 #root_footer
   margin-top: 40px
 #footer
   letter-spacing: 1px
   +mast-bg
   +box-shadow(0px 1px 7px #333 inset)
+  em
+    margin-left: 10px
   &, a
     color: #6B0702
   .repo-link
     text-decoration: underline
-  .platform45link
+  .platform45logo
+    height: 35px
+    width: 46px
+    margin-left: -20px
+    padding-top: 5px
     +inline-block
-    padding: 0
-    margin-top: 4px
-    font-size: 11px
 
+    +background(image-url('p45.png') bottom left no-repeat, #b81515)
+    +opacity(0.55)
+    +transition(opacity 0.4s)
+
+    &:hover
+      +opacity(1)
+    +box-shadow(0 3px 10px #6B0702 inset)
+  .btn-mini
+    margin-left: 6px
 /* template */
 form.drone-form
   .drone
@@ -138,7 +149,13 @@ form.drone-form
 
 /* weapons */
 nav.category-filter
+  padding: 3px 5px
+  +border-radius(5px)
+
+  background-color: #e7e7e7
+
   margin-bottom: 10px
+
   li
     cursor: pointer
   li a

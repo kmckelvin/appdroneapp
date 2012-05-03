@@ -3,6 +3,7 @@
 //= require jquery.zclip
 //= require chosen-jquery
 //= require ember
+//= require gritter
 //= require bootstrap-tab
 //= require bootstrap-modal
 //= require bootstrap-dropdown
@@ -14,3 +15,5 @@
 $(document).ready ->
   $('.chzn-select').chosen();
   $('*[rel="tooltip"]').tooltip({ placement: 'top' })
+  $('*[rel="tooltip-left"]').tooltip({ placement: 'left' })  
+  $('*[rel="tooltip-right"]').tooltip({ placement: 'right' })

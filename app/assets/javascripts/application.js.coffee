@@ -15,3 +15,5 @@
 $(document).ready ->
   $('.chzn-select').chosen();
   $('*[rel="tooltip"]').tooltip({ placement: 'top' })
+  $('*[rel="tooltip-left"]').tooltip({ placement: 'left' })  
+  $('*[rel="tooltip-right"]').tooltip({ placement: 'right' })
