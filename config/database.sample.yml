@@ -2,19 +2,19 @@ development:
   adapter: postgresql
   encoding: utf8
   database: appdroneapp_development
-  username: daniel
+  username:
   password:
 
 test:
   adapter: postgresql
   encoding: utf8
   database: appdroneapp_test
-  username: daniel
+  username:
   password:
 
 production:
   adapter: postgresql
   encoding: utf8
   database: appdroneapp_production
-  username: daniel
+  username:
   password:
