@@ -6,6 +6,7 @@ App.categoryController = Ember.Object.create({
       var match = c == category;
       c.set('active',match);
     });
+    App.dronesController.set('searchQuery', '');
     this.set('activeCategory',category);
-  },
+  }
 });
