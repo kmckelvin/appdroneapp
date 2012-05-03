@@ -1,2 +1,0 @@
-<h1>Tabs</h1>
-{{view App.DronesDependencyView contentBinding="content"}}
