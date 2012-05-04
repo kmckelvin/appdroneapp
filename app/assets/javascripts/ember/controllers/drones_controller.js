@@ -14,7 +14,6 @@ App.dronesController = Ember.Object.create({
     return this.get('drones').filter(function(item) {
       return item.get('name').toLowerCase().indexOf(query.toLowerCase()) >= 0;
     });
-    App.categoryController.clear();
   }.property('drones','App.categoryController.activeCategory', 'searchQuery'),
 
   activeDronesWithParams: function() {
