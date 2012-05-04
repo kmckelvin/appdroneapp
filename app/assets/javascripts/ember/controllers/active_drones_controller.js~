@@ -1,6 +1,0 @@
-App.activeDronesController = Ember.Object.create({
-  dronesBinding: 'App.dronesController.drones'
-  activeDronesCount: function() {
-    return this.get("drones").filterProperty("active",true).length;
-  }.property('drones.@each.active')
-});

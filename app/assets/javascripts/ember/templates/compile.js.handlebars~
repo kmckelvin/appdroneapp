@@ -1,7 +1,0 @@
-  {{#if isBusy}}
-    <i class="icon-asterisk"></i>&nbsp;
-    Busy...
-  {{else}}
-    <i class="icon-cogs"></i>&nbsp;
-    Let's do this!
-  {{/if}}

@@ -1,3 +1,0 @@
-App.TabbedDronesDependencyView = Ember.View.create({
-  templateName: 'ember/templates/tabbed_dependency_list',  
-})

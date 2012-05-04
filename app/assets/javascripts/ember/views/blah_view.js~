@@ -1,3 +1,0 @@
-App.BlahView = Ember.View.extend({
-  templateName: 'ember/templates/blah',
-})
